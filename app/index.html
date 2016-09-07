@@ -12,6 +12,12 @@
     html, body {
       height: 100vh;
       width: 100vw;
+      margin: auto;
+    }
+
+    .container {
+      width: 80%;
+      margin: auto;
     }
     .row {
       margin-bottom: 30px;
@@ -26,29 +32,34 @@
       $('#startBtn').click(function(){
         audio[0].play();
         audio[1].play();
+        audio[2].play();
+        audio[3].play();
+        audio[4].play();
+        audio[5].play();
       });
 
       $('#stopBtn').click(function(){
         audio[0].pause();
         audio[1].pause();
+        audio[2].pause();
+        audio[3].pause();
+        audio[4].pause();
+        audio[5].pause();
       });
 
-      $("#control1").bootstrapSlider({
-  reversed : true
-});
-      $("#control2").bootstrapSlider({
-  reversed : true
-});
+      $("#control1").bootstrapSlider({ reversed : true });
+      $("#control2").bootstrapSlider({ reversed : true });
+      $("#control3").bootstrapSlider({ reversed : true }); 
+      $("#control4").bootstrapSlider({ reversed : true });
+      $("#control5").bootstrapSlider({ reversed : true });
+      $("#control6").bootstrapSlider({ reversed : true });
 
-      $("#control1").on("slide", function(slideEvt) {
-        // $("#value1").text(slideEvt.value);
-        audio[0].volume = slideEvt.value / 100;
-      });
-
-      $("#control2").on("slide", function(slideEvt) {
-        // $("#value2").text(slideEvt.value);
-        audio[1].volume = slideEvt.value / 100;
-      });
+      $("#control1").on("slide", function(slideEvt) { audio[0].volume = slideEvt.value / 100; });
+      $("#control2").on("slide", function(slideEvt) { audio[1].volume = slideEvt.value / 100; });
+      $("#control3").on("slide", function(slideEvt) { audio[2].volume = slideEvt.value / 100; });
+      $("#control4").on("slide", function(slideEvt) { audio[3].volume = slideEvt.value / 100; });
+      $("#control5").on("slide", function(slideEvt) { audio[4].volume = slideEvt.value / 100; });
+      $("#control6").on("slide", function(slideEvt) { audio[5].volume = slideEvt.value / 100; });
 
     });
   </script>
@@ -60,33 +71,78 @@
       <div class="row">
         <h2>Multi-Track Mixing POC</h2>
       </div>
-      <div class="row">
-        <audio controls id="audio1">
-          <source src="audio/track1.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-      </div>
-      <div class="row">
-        <audio controls id="audio2">
-          <source src="audio/track2.mp3" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-      </div>
+      
       <div class="row">
         <h3>Control</h3>
-        <div class="col-xs-6">
-          <input id="control1" type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="50" data-slider-orientation="vertical" />
-          <!-- <span id="value1"></span> -->
+        <div class="col-xs-2">
+          <div class="row">
+            <input class="col-xs-12" id="control1" type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="50" data-slider-orientation="vertical" />
+            <span class="col-xs-12">Vocals</span>
+          </div>
         </div>
-        <div class="col-xs-6">
-          <input id="control2" type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="50" data-slider-orientation="vertical" />
-          <!-- <span id="value2"></span> -->
+        <div class="col-xs-2">
+          <div class="row">
+            <input class="col-xs-12" id="control2" type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="50" data-slider-orientation="vertical" />
+            <span class="col-xs-12" id="value2">Keys</span>
+          </div>
+        </div>
+        <div class="col-xs-2">
+          <div class="row">
+            <input class="col-xs-12" id="control3" type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="50" data-slider-orientation="vertical" />
+            <span class="col-xs-12" id="value3">Guitar</span>
+          </div>
+        </div>
+        <div class="col-xs-2">
+          <div class="row">
+            <input class="col-xs-12" id="control4" type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="50" data-slider-orientation="vertical" />
+            <span class="col-xs-12" id="value4">Bass</span>
+          </div>
+        </div>
+        <div class="col-xs-2">
+          <div class="row">
+            <input class="col-xs-12" id="control5" type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="50" data-slider-orientation="vertical" />
+            <span class="col-xs-12" id="value5">Drums</span>
+          </div>
+        </div>
+        <div class="col-xs-2">
+          <div class="row">
+            <input class="col-xs-12" id="control6" type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="50" data-slider-orientation="vertical" />
+            <span class="col-xs-12" id="value6">Click</span>
+          </div>
         </div>
       </div>
       <div class="row">
         <button type="button" class="btn btn-default" id="startBtn">start</button>
         <button type="button" class="btn btn-default" id="stopBtn">stop</button>
         <!-- <button type="button" class="btn btn-default">nothing</button> -->
+      </div>
+
+
+      <div class="row">
+        <audio id="audio1">
+          <source src="audio/活水江河_Mix_Vocals.mp3" type="audio/mpeg">
+          Your browser does not support the audio element.
+        </audio>
+        <audio id="audio2">
+          <source src="audio/活水江河_Mix_Keys.mp3" type="audio/mpeg">
+          Your browser does not support the audio element.
+        </audio>
+        <audio id="audio2">
+          <source src="audio/活水江河_Mix_Guitar.mp3" type="audio/mpeg">
+          Your browser does not support the audio element.
+        </audio>
+        <audio id="audio2">
+          <source src="audio/活水江河_Mix_Bass.mp3" type="audio/mpeg">
+          Your browser does not support the audio element.
+        </audio>
+        <audio id="audio2">
+          <source src="audio/活水江河_Mix_Drums128.mp3" type="audio/mpeg">
+          Your browser does not support the audio element.
+        </audio>
+        <audio id="audio2">
+          <source src="audio/活水江河_Mix_Click.mp3" type="audio/mpeg">
+          Your browser does not support the audio element.
+        </audio>
       </div>
   </div>
   
