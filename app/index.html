@@ -9,19 +9,12 @@
   <script type="text/javascript" src="js/bootstrap-slider.js"></script>
   
   <style type="text/css">
-    html, body {
-      height: 100vh;
-      width: 100vw;
-      margin: auto;
-    }
+    html, body { height: 100vh; width: 100vw; margin: auto; }
+    body { background-color: #333333; }
+    h1, h2, h3, h4, h5, h6, span, p, a, a:hover, a:visited { color: #FFFFFF; }
+    .container { width: 80%; margin: auto; }
+    .row { margin-bottom: 30px; }
 
-    .container {
-      width: 80%;
-      margin: auto;
-    }
-    .row {
-      margin-bottom: 30px;
-    }
   </style>
 
   <script type="text/javascript">
@@ -91,10 +84,11 @@
   <div class="container">
       <div class="row">
         <h2>Multi-Track Mixing POC</h2>
+        <h4>Track: 活水江河 by Melody Hwang</h4>
       </div>
       
       <div class="row">
-        <h3>Control</h3>
+        <h3 style="margin-bottom: 20px;">Control</h3>
         <div class="col-xs-2">
           <div class="row">
             <input class="col-xs-12" id="control1" type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="100" data-slider-orientation="vertical" />
@@ -167,6 +161,13 @@
           Your browser does not support the audio element.
         </audio>
       </div>
+
+      <hr>
+      <footer class="row">
+        <span>Created By Kevin Hong @ 2016 | </span>
+        <a href="https://github.com/KevinHong913/multitrack-mix-poc" target="_blank">Source Code (Github)</a>
+      </footer>
+
   </div>
   
 </body>
