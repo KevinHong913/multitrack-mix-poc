@@ -47,6 +47,27 @@
         audio[5].pause();
       });
 
+      $('#minusBtn').click(function(){
+        var time = audio[0].currentTime;
+        audio[0].currentTime = time - 5;
+        audio[1].currentTime = time - 5;
+        audio[2].currentTime = time - 5;
+        audio[3].currentTime = time - 5;
+        audio[4].currentTime = time - 5;
+        audio[5].currentTime = time - 5;
+
+      });
+
+      $('#plusBtn').click(function(){
+        var time = audio[0].currentTime;
+        audio[0].currentTime = time + 5;
+        audio[1].currentTime = time + 5;
+        audio[2].currentTime = time + 5;
+        audio[3].currentTime = time + 5;
+        audio[4].currentTime = time + 5;
+        audio[5].currentTime = time + 5;
+      });
+
       $("#control1").bootstrapSlider({ reversed : true });
       $("#control2").bootstrapSlider({ reversed : true });
       $("#control3").bootstrapSlider({ reversed : true }); 
@@ -114,32 +135,34 @@
       <div class="row">
         <button type="button" class="btn btn-default" id="startBtn">start</button>
         <button type="button" class="btn btn-default" id="stopBtn">stop</button>
+        <button type="button" class="btn btn-default" id="minusBtn">-5 sec</button>
+        <button type="button" class="btn btn-default" id="plusBtn">+5 sec</button>
         <!-- <button type="button" class="btn btn-default">nothing</button> -->
       </div>
 
 
       <div class="row">
-        <audio id="audio1" controls>
+        <audio id="audio1" controls preload="auto">
           <source src="audio/活水江河_Mix_Vocals.mp3" type="audio/mpeg">
           Your browser does not support the audio element.
         </audio>
-        <audio id="audio2" controls>
+        <audio id="audio2" controls preload="auto">
           <source src="audio/活水江河_Mix_Keys.mp3" type="audio/mpeg">
           Your browser does not support the audio element.
         </audio>
-        <audio id="audio3" controls>
+        <audio id="audio3" controls preload="auto">
           <source src="audio/活水江河_Mix_Guitar.mp3" type="audio/mpeg">
           Your browser does not support the audio element.
         </audio>
-        <audio id="audio4" controls>
+        <audio id="audio4" controls preload="auto">
           <source src="audio/活水江河_Mix_Bass.mp3" type="audio/mpeg">
           Your browser does not support the audio element.
         </audio>
-        <audio id="audio5" controls>
+        <audio id="audio5" controls preload="auto">
           <source src="audio/活水江河_Mix_Drums128.mp3" type="audio/mpeg">
           Your browser does not support the audio element.
         </audio>
-        <audio id="audio6" controls>
+        <audio id="audio6" controls preload="auto">
           <source src="audio/活水江河_Mix_Click.mp3" type="audio/mpeg">
           Your browser does not support the audio element.
         </audio>
