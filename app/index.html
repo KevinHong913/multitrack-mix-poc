@@ -61,6 +61,16 @@
         audio[5].currentTime = time + 5;
       });
 
+      $('#restartBtn').click(function(){
+        var time = audio[0].currentTime;
+        audio[0].currentTime = 0;
+        audio[1].currentTime = 0;
+        audio[2].currentTime = 0;
+        audio[3].currentTime = 0;
+        audio[4].currentTime = 0;
+        audio[5].currentTime = 0;
+      });
+
       $("#control1").bootstrapSlider({ reversed : true });
       $("#control2").bootstrapSlider({ reversed : true });
       $("#control3").bootstrapSlider({ reversed : true }); 
@@ -127,8 +137,9 @@
         </div>
       </div>
       <div class="row">
-        <button type="button" class="btn btn-default" id="startBtn">start</button>
-        <button type="button" class="btn btn-default" id="stopBtn">stop</button>
+        <button type="button" class="btn btn-default" id="startBtn">Start</button>
+        <button type="button" class="btn btn-default" id="stopBtn">Stop</button>
+        <button type="button" class="btn btn-default" id="restartBtn">Restart</button>
         <button type="button" class="btn btn-default" id="minusBtn">-5 sec</button>
         <button type="button" class="btn btn-default" id="plusBtn">+5 sec</button>
         <!-- <button type="button" class="btn btn-default">nothing</button> -->
