@@ -40,25 +40,15 @@
         audio[5].pause();
       });
 
-      $('#minusBtn').click(function(){
+      $('.timeBtn').click(function(event) {
         var time = audio[0].currentTime;
-        audio[0].currentTime = time - 5;
-        audio[1].currentTime = time - 5;
-        audio[2].currentTime = time - 5;
-        audio[3].currentTime = time - 5;
-        audio[4].currentTime = time - 5;
-        audio[5].currentTime = time - 5;
-
-      });
-
-      $('#plusBtn').click(function(){
-        var time = audio[0].currentTime;
-        audio[0].currentTime = time + 5;
-        audio[1].currentTime = time + 5;
-        audio[2].currentTime = time + 5;
-        audio[3].currentTime = time + 5;
-        audio[4].currentTime = time + 5;
-        audio[5].currentTime = time + 5;
+        var timeBuffer = parseInt($(event.target).attr("data-time") );
+        audio[0].currentTime = time + timeBuffer;
+        audio[1].currentTime = time + timeBuffer;
+        audio[2].currentTime = time + timeBuffer;
+        audio[3].currentTime = time + timeBuffer;
+        audio[4].currentTime = time + timeBuffer;
+        audio[5].currentTime = time + timeBuffer;
       });
 
       $('#restartBtn').click(function(){
@@ -91,13 +81,16 @@
 </head>
 
 <body>
+
+  <a href="song2.html"><button class="btn btn-primary">Go To 測不透的愛</button></a>
   <div class="container">
       <div class="row">
         <h2>Multi-Track Mixing POC</h2>
         <h4>Track: 活水江河 by Melody Hwang</h4>
       </div>
       
-      <div class="row">
+      
+      <div class="row" id="control">
         <h3 style="margin-bottom: 20px;">Control</h3>
         <div class="col-xs-2">
           <div class="row">
@@ -137,12 +130,19 @@
         </div>
       </div>
       <div class="row">
-        <button type="button" class="btn btn-default" id="startBtn">Start</button>
-        <button type="button" class="btn btn-default" id="stopBtn">Stop</button>
-        <button type="button" class="btn btn-default" id="restartBtn">Restart</button>
-        <button type="button" class="btn btn-default" id="minusBtn">-5 sec</button>
-        <button type="button" class="btn btn-default" id="plusBtn">+5 sec</button>
-        <!-- <button type="button" class="btn btn-default">nothing</button> -->
+        <div class="col-xs-12" style="margin-bottom: 15px;">
+          <button type="button" class="btn btn-primary" id="startBtn">Start</button>
+          <button type="button" class="btn btn-primary" id="stopBtn">Stop</button>
+          <button type="button" class="btn btn-danger" id="restartBtn">Restart</button>
+        </div>
+        <div class="col-xs-12">
+          <button type="button" class="btn btn-success timeBtn" data-time='-5' >-5 sec</button>
+          <button type="button" class="btn btn-success timeBtn" data-time='5' >+5 sec</button>
+          <button type="button" class="btn btn-success timeBtn" data-time='-15' >-15 sec</button>
+          <button type="button" class="btn btn-success timeBtn" data-time='15' >+15 sec</button>
+          <button type="button" class="btn btn-success timeBtn" data-time='-30' >-30 sec</button>
+          <button type="button" class="btn btn-success timeBtn" data-time='30' >+30 sec</button>
+        </div>
       </div>
 
 

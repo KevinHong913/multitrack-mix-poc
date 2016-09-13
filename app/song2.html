@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Multi-track mixing POC</title>
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="css/bootstrap-slider.css">
+  <script type="text/javascript" src="js/jquery.js"></script>
+  <script type="text/javascript" src="js/bootstrap-slider.js"></script>
+  
+  <style type="text/css">
+    html, body { height: 100vh; width: 100vw; margin: auto; }
+    body { background-color: #333333; }
+    h1, h2, h3, h4, h5, h6, span, p, a, a:hover, a:visited { color: #FFFFFF; }
+    .container { width: 80%; margin: auto; }
+    .row { margin-bottom: 30px; }
+
+    #control span {
+      font-size: 20px;
+    }
+
+  </style>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+
+      var audio = document.getElementsByTagName("audio");
+
+      $('#startBtn').click(function(){
+        audio[0].play();
+        audio[1].play();
+        audio[2].play();
+        audio[3].play();
+        audio[4].play();
+        audio[5].play();
+      });
+
+      $('#stopBtn').click(function(){
+        audio[0].pause();
+        audio[1].pause();
+        audio[2].pause();
+        audio[3].pause();
+        audio[4].pause();
+        audio[5].pause();
+      });
+
+      $('.timeBtn').click(function(event) {
+        var time = audio[0].currentTime;
+        var timeBuffer = parseInt($(event.target).attr("data-time") );
+        audio[0].currentTime = time + timeBuffer;
+        audio[1].currentTime = time + timeBuffer;
+        audio[2].currentTime = time + timeBuffer;
+        audio[3].currentTime = time + timeBuffer;
+        audio[4].currentTime = time + timeBuffer;
+        audio[5].currentTime = time + timeBuffer;
+      });
+
+      $('#restartBtn').click(function(){
+        var time = audio[0].currentTime;
+        audio[0].currentTime = 0;
+        audio[1].currentTime = 0;
+        audio[2].currentTime = 0;
+        audio[3].currentTime = 0;
+        audio[4].currentTime = 0;
+        audio[5].currentTime = 0;
+      });
+
+      $("#control1").bootstrapSlider({ reversed : true });
+      $("#control2").bootstrapSlider({ reversed : true });
+      $("#control3").bootstrapSlider({ reversed : true }); 
+      $("#control4").bootstrapSlider({ reversed : true });
+      $("#control5").bootstrapSlider({ reversed : true });
+      $("#control6").bootstrapSlider({ reversed : true });
+
+      $("#control1").on("slide", function(slideEvt) { audio[0].volume = slideEvt.value / 100; });
+      $("#control2").on("slide", function(slideEvt) { audio[1].volume = slideEvt.value / 100; });
+      $("#control3").on("slide", function(slideEvt) { audio[2].volume = slideEvt.value / 100; });
+      $("#control4").on("slide", function(slideEvt) { audio[3].volume = slideEvt.value / 100; });
+      $("#control5").on("slide", function(slideEvt) { audio[4].volume = slideEvt.value / 100; });
+      $("#control6").on("slide", function(slideEvt) { audio[5].volume = slideEvt.value / 100; });
+
+    });
+  </script>
+
+</head>
+
+<body>
+  <a href="index.html"><button class="btn btn-primary">Go To 活水江河</button></a>
+  <div class="container">
+      <div class="row">
+        <h2>Multi-Track Mixing POC</h2>
+        <h4>Track: 測不透的愛 by Amy Li, Sing by Timothy Chen</h4>
+      </div>
+      
+      <div class="row" id="control">
+        <h3 style="margin-bottom: 20px;">Control</h3>
+        <div class="col-xs-2">
+          <div class="row">
+            <input class="col-xs-12" id="control1" type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="100" data-slider-orientation="vertical" />
+            <span class="col-xs-12">Vocals</span>
+          </div>
+        </div>
+        <div class="col-xs-2">
+          <div class="row">
+            <input class="col-xs-12" id="control2" type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="100" data-slider-orientation="vertical" />
+            <span class="col-xs-12" id="value2">Keys</span>
+          </div>
+        </div>
+        <div class="col-xs-2">
+          <div class="row">
+            <input class="col-xs-12" id="control3" type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="100" data-slider-orientation="vertical" />
+            <span class="col-xs-12" id="value3">Guitar</span>
+          </div>
+        </div>
+        <div class="col-xs-2">
+          <div class="row">
+            <input class="col-xs-12" id="control4" type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="100" data-slider-orientation="vertical" />
+            <span class="col-xs-12" id="value4">Bass</span>
+          </div>
+        </div>
+        <div class="col-xs-2">
+          <div class="row">
+            <input class="col-xs-12" id="control5" type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="100" data-slider-orientation="vertical" />
+            <span class="col-xs-12" id="value5">Drums</span>
+          </div>
+        </div>
+        <div class="col-xs-2">
+          <div class="row">
+            <input class="col-xs-12" id="control6" type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="100" data-slider-orientation="vertical" />
+            <span class="col-xs-12" id="value6">Click</span>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12" style="margin-bottom: 15px;">
+          <button type="button" class="btn btn-primary" id="startBtn">Start</button>
+          <button type="button" class="btn btn-primary" id="stopBtn">Stop</button>
+          <button type="button" class="btn btn-danger" id="restartBtn">Restart</button>
+        </div>
+        <div class="col-xs-12">
+          <button type="button" class="btn btn-success timeBtn" data-time='-5' >-5 sec</button>
+          <button type="button" class="btn btn-success timeBtn" data-time='5' >+5 sec</button>
+          <button type="button" class="btn btn-success timeBtn" data-time='-15' >-15 sec</button>
+          <button type="button" class="btn btn-success timeBtn" data-time='15' >+15 sec</button>
+          <button type="button" class="btn btn-success timeBtn" data-time='-30' >-30 sec</button>
+          <button type="button" class="btn btn-success timeBtn" data-time='30' >+30 sec</button>
+        </div>
+      </div>
+
+
+      <div class="row">
+        <audio id="audio1"  preload="auto">
+          <source src="audio/測不透的愛/測不透的愛_Vocals.mp3" type="audio/mpeg">
+          Your browser does not support the audio element.
+        </audio>
+        <audio id="audio2"  preload="auto">
+          <source src="audio/測不透的愛/測不透的愛_Piano.mp3" type="audio/mpeg">
+          Your browser does not support the audio element.
+        </audio>
+        <audio id="audio3"  preload="auto">
+          <source src="audio/測不透的愛/測不透的愛_Guitars.mp3" type="audio/mpeg">
+          Your browser does not support the audio element.
+        </audio>
+        <audio id="audio4"  preload="auto">
+          <source src="/audio/測不透的愛/測不透的愛_Bass.mp3" type="audio/mpeg">
+          Your browser does not support the audio element.
+        </audio>
+        <audio id="audio5"  preload="auto">
+          <source src="audio/測不透的愛/測不透的愛_Drums.mp3" type="audio/mpeg">
+          Your browser does not support the audio element.
+        </audio>
+        <audio id="audio6"  preload="auto">
+          <source src="audio/測不透的愛/測不透的愛_Click.mp3" type="audio/mpeg">
+          Your browser does not support the audio element.
+        </audio>
+      </div>
+
+      <hr>
+      <footer class="row">
+        <span>Created By Kevin Hong @ 2016 | </span>
+        <a href="https://github.com/KevinHong913/multitrack-mix-poc" target="_blank">Source Code (Github)</a>
+      </footer>
+
+  </div>
+  
+</body>
+</html>
